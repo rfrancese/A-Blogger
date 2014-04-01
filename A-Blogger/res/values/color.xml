@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color">#688893</color>
+    <color name="color_chromatic_0">#2c3336</color>
+    <color name="color_chromatic_1">#414f54</color>
+    <color name="color_chromatic_2">#5a7078</color>
+    
+    <color name="color_chromatic_3">#8299a1</color>
+    <color name="color_chromatic_4">#a7b5ba</color>
+    <color name="color_chromatic_5">#e1e5e6</color>
+    
+	<color name="color_custom">#666666</color>    
+</resources>

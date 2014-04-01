@@ -4,6 +4,9 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
@@ -14,13 +17,36 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.a_blogger.MainActivity"
-            android:label="@string/app_name" >
+            android:name="a_blogger.activity.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="a_blogger.activity.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:noHistory="true"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+        <activity
+            android:name="a_blogger.activity.HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name="a_blogger.activity.PostListActivity"
+            android:label="@string/title_post_list" >
+        </activity>
+        <activity
+            android:name="a_blogger.activity.PostDetailActivity"
+            android:label="@string/title_post_detail"
+            android:parentActivityName="a_blogger.activity.PostListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PostListActivity" />
         </activity>
     </application>
 
