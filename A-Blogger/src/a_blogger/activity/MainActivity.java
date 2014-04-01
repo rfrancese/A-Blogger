@@ -4,6 +4,7 @@ package a_blogger.activity;
 import com.example.a_blogger.R;
 
 import a_blogger.components.auth.Auth;
+import a_blogger.components.storage.LocalStorage;
 import a_blogger.model.User;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -20,8 +21,6 @@ public class MainActivity extends Activity {
 	public final static int REQUEST_ACTIVITY_LOGIN = 0;
 	public final static int REQUEST_ACTIVITY_HOME  = 1;
 	
-	public static User user = null;
-	
 	public TextView v;
 	
 	@Override
@@ -33,9 +32,7 @@ public class MainActivity extends Activity {
 		Log.v("hhh","hhh main create");
 		ma = this;
 		
-		Auth.getUser();
-		
-		//LocalStorage.removeAll();
+		LocalStorage.removeAll();
 		
 		if(Auth.check()){
 			callHome();

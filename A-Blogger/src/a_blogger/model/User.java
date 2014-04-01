@@ -14,7 +14,6 @@ public class User {
 	private String name;
 	private String surname;
 	private String laravel_session;
-	private ArrayList<Post> posts = null;
 	
 	public User(JSONObject obj,String ls){
 
@@ -22,21 +21,14 @@ public class User {
 		try {
 			id = obj.getInt("id");
 			username = obj.getString("username");
-			username = obj.getString("email");
-			username = obj.getString("name");
-			username = obj.getString("surname");
+			email = obj.getString("email");
+			name = obj.getString("name");
+			surname = obj.getString("surname");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		Log.v("hhh","hhh NEW USER LARAVEL SESSION: " + ls);
 		laravel_session = ls;
-	}
-	
-	public ArrayList<Post> Posts(){
-		if(posts == null){
-			posts = Post.get();
-		}
-		return posts;
 	}
 	
 	public int getId(){

@@ -1,6 +1,7 @@
 package a_blogger.activity;
 
 import a_blogger.model.Post;
+import a_blogger.model.PostList;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.a_blogger.R;
-import com.example.a_blogger.dummy.DummyContent;
 
 /**
  * A fragment representing a single Post detail screen. This fragment is either
@@ -43,7 +43,7 @@ public class PostDetailFragment extends Fragment {
 			// Load the dummy content specified by the fragment
 			// arguments. In a real-world scenario, use a Loader
 			// to load content from a content provider.
-			mItem = DummyContent.ITEM_MAP.get(getArguments().getString(
+			mItem = PostList.allMapped().get(getArguments().getString(
 					ARG_ITEM_ID));
 		}
 	}

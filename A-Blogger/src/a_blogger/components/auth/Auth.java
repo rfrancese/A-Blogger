@@ -11,6 +11,7 @@ import a_blogger.components.http.Response;
 import a_blogger.components.route.Route;
 import a_blogger.components.storage.LocalStorage;
 import a_blogger.model.User;
+import android.os.AsyncTask;
 import android.util.Log;
 
 /**
@@ -24,6 +25,7 @@ import android.util.Log;
  *
  */
 public class Auth {
+	private static User user ;
 	
 	/**
 	 * Effettua il login online dell'utente
@@ -52,9 +54,11 @@ public class Auth {
 				Log.v("hhh","hhh attempt SAVING USER : " + jsonUserData);
 				LocalStorage.add("User", jsonUserData); //Salvo i dati dell'utente sul dispositivo
 				LocalStorage.add("logged", true);
-				MainActivity.user = new User(new JSONObject(jsonUserData),getLaravelCookie(response)); //Setto l'utente nella MainActivity
+				user = new User(new JSONObject(jsonUserData),getLaravelCookie(response)); //Setto l'utente nella MainActivity
 				return true;
-			} catch (JSONException e) { }
+			} catch (JSONException e) {
+				Log.v("hhh","hhh attempt SAVING USER ERROR " + e.getMessage());
+			}
 		}
 		return false;
 	}
@@ -64,6 +68,10 @@ public class Auth {
 	 * @return
 	 */
 	public static boolean check(){
+		if(user == null){
+			//new AsyncAttempt();
+			attempt(LocalStorage.get("email", (String) null),LocalStorage.get("password", (String) null));
+		}
 		return LocalStorage.get("logged", false);
 	}
 	
@@ -79,16 +87,10 @@ public class Auth {
 	 * @return
 	 */
 	public static User getUser(){
-		if(MainActivity.user == null){
-
-			Log.v("hhh","hhh MainActivity.user IS NULL!!");
-			if(check()){ //Controller se l'utente si è già loggato
-				//Riapro la sessione sul server rieffettuando il login
-				attempt(LocalStorage.get("email", (String) null),LocalStorage.get("password", (String) null));
-			}
+		if(user == null){
+			check();
 		}
-		Log.v("hhh","hhh MainActivity.user ok");
-		return MainActivity.user;
+		return user;
 	}
 	
 	/**
@@ -105,4 +107,7 @@ public class Auth {
 		}
 		return null;
 	}
+	
+	
 }
+

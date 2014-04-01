@@ -17,7 +17,7 @@ public class Response {
 	
 	public Response(HttpResponse httpresponse){
 		this.response = httpresponse;
-		Log.v("hhh","hhh RESPONSE : " + getContent());
+		//Log.v("hhh","hhh RESPONSE : " + getContent());
 	}
 	public HttpResponse getBasicResponse(){
 		return response;
